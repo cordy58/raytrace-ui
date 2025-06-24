@@ -18,17 +18,17 @@
     ></textarea>
 
     <button (click)="submitRawJson()" [disabled]="loading" style="margin-top: 1rem;">
-      Render from JSON
+      Generate Image from JSON
     </button>
   </fieldset>
 
   <!-- Render Button -->
   <div style="text-align: center; margin-top: 2rem;">
     <button (click)="renderImage()" [disabled]="loading">
-      {{ loading ? 'Rendering...' : 'Render Image' }}
+      {{ loading ? 'Rendering...' : 'Generate Image from Detail Boxes Below' }}
     </button>
     <button (click)="generateRandomScene()" [disabled]="loading" style="margin-left: 1rem;">
-      Generate Random Scene
+      Generate Random Image
     </button>
   </div>
 
@@ -47,6 +47,7 @@
     <p><em>Rendering in progress... (may take up to 1 minute, especially the first time)</em></p>
   </div>
 
+<h3> Detail Boxes </h3>
   <!-- Camera Controls -->
 <fieldset style="margin-top: 2rem; padding: 1rem; border: 1px solid #ccc;">
   <legend><strong>Camera</strong></legend>
