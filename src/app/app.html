@@ -1,6 +1,52 @@
 <div style="padding: 2rem; max-width: 900px; margin: auto">
   <h1 style="text-align: center;">Ray Tracer Viewer</h1>
 
+  <fieldset style="margin-top: 2rem; padding: 1rem; border: 1px solid #ccc;">
+    <legend><strong>Paste Raw Scene JSON</strong></legend>
+    <p>I suggest pasting this sample into ChatGPT and asking it to use this sample as a 
+      template to build another scene for you, then paste the json output it gives you 
+      here to render the scene. You can be specific with the colors and numbers of the
+      triangles and spheres, the background, shininess, etc. Note that adding more shapes 
+      will increase render time, so if you add 50 spheres or something crazy, you may
+      have to wait a while.</p>
+
+    <textarea
+      [(ngModel)]="jsonInput"
+      rows="10"
+      style="width: 100%; font-family: monospace;"
+      placeholder='Paste scene JSON here...'
+    ></textarea>
+
+    <button (click)="submitRawJson()" [disabled]="loading" style="margin-top: 1rem;">
+      Render from JSON
+    </button>
+  </fieldset>
+
+  <!-- Render Button -->
+  <div style="text-align: center; margin-top: 2rem;">
+    <button (click)="renderImage()" [disabled]="loading">
+      {{ loading ? 'Rendering...' : 'Render Image' }}
+    </button>
+    <button (click)="generateRandomScene()" [disabled]="loading" style="margin-left: 1rem;">
+      Generate Random Scene
+    </button>
+  </div>
+
+  <!-- Result -->
+  <div *ngIf="imageUrl" style="margin-top: 2rem; text-align: center;">
+    <h3>Rendered Image</h3>
+    <img
+      [src]="imageUrl + '?cacheBust=' + cacheBust"
+      alt="Raytraced Output"
+      style="max-width: 100%; border: 1px solid #ccc; box-shadow: 2px 2px 8px rgba(0,0,0,0.2)"
+    />
+  </div>
+
+  <div *ngIf="loading" style="margin-top: 1rem; text-align: center;">
+    <div class="spinner" style="margin: 1rem auto; width: 40px; height: 40px; border: 4px solid #ccc; border-top: 4px solid #333; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+    <p><em>Rendering in progress... (may take up to 1 minute, especially the first time)</em></p>
+  </div>
+
   <!-- Camera Controls -->
 <fieldset style="margin-top: 2rem; padding: 1rem; border: 1px solid #ccc;">
   <legend><strong>Camera</strong></legend>
@@ -285,54 +331,6 @@
     </div>
   </div>
 </fieldset>
-
-
-  <!-- Render Button -->
-  <div style="text-align: center; margin-top: 2rem;">
-    <button (click)="renderImage()" [disabled]="loading">
-      {{ loading ? 'Rendering...' : 'Render Image' }}
-    </button>
-    <button (click)="generateRandomScene()" [disabled]="loading" style="margin-left: 1rem;">
-      Generate Random Scene
-    </button>
-  </div>
-
-  <!-- Result -->
-  <div *ngIf="imageUrl" style="margin-top: 2rem; text-align: center;">
-    <h3>Rendered Image</h3>
-    <img
-      [src]="imageUrl + '?cacheBust=' + cacheBust"
-      alt="Raytraced Output"
-      style="max-width: 100%; border: 1px solid #ccc; box-shadow: 2px 2px 8px rgba(0,0,0,0.2)"
-    />
-  </div>
-
-  <div *ngIf="loading" style="margin-top: 1rem; text-align: center;">
-    <div class="spinner" style="margin: 1rem auto; width: 40px; height: 40px; border: 4px solid #ccc; border-top: 4px solid #333; border-radius: 50%; animation: spin 1s linear infinite;"></div>
-    <p><em>Rendering in progress... (may take up to 1 minute, especially the first time)</em></p>
-  </div>
-
-
-  <fieldset style="margin-top: 2rem; padding: 1rem; border: 1px solid #ccc;">
-    <legend><strong>Paste Raw Scene JSON</strong></legend>
-    <p>I suggest pasting this sample into ChatGPT and asking it to use this sample as a 
-      template to build another scene for you, then paste the json output it gives you 
-      here to render the scene. You can be specific with the colors and numbers of the
-      triangles and spheres, the background, shininess, etc. Note that adding more shapes 
-      will increase render time, so if you add 50 spheres or something crazy, you may
-      have to wait a while.</p>
-
-    <textarea
-      [(ngModel)]="jsonInput"
-      rows="10"
-      style="width: 100%; font-family: monospace;"
-      placeholder='Paste scene JSON here...'
-    ></textarea>
-
-    <button (click)="submitRawJson()" [disabled]="loading" style="margin-top: 1rem;">
-      Render from JSON
-    </button>
-  </fieldset>
 
 </div>
 
