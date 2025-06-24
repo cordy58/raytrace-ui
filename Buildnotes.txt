@@ -1,0 +1,3 @@
+To build: ng build --base-href "/raytrace-ui/"
+to Deploy: npx angular-cli-ghpages --dir=dist/raytrace-ui/browser
+    - Then go to repo then settings->pages, set source to gh-pages branch, root folder, and save
