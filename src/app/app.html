@@ -1,14 +1,29 @@
 <div style="padding: 2rem; max-width: 900px; margin: auto">
   <h1 style="text-align: center;">Ray Tracer Viewer</h1>
+  <p>The source code for this raytracer I've built can be found here: <link rel="stylesheet" href="https://github.com/cordy58/ray_tracer"></p>
+  <p>The source code for this bare-bones frontend can be found here: <link rel="stylesheet" href="https://github.com/cordy58/raytrace-ui"></p>
+
+  <p>I'm hosting the frontend for this site on github pages and the backend on the free tier of Render, 
+    so if there are issues with initial load speeds, that's why. Render puts my backend to sleep after 
+    15 minutes of inactivity. 
+  </p>
 
   <fieldset style="margin-top: 2rem; padding: 1rem; border: 1px solid #ccc;">
     <legend><strong>Paste Raw Scene JSON</strong></legend>
-    <p>I suggest pasting this sample into ChatGPT and asking it to use this sample as a 
+    <p>I suggest pasting this sample json into ChatGPT and asking it to use the json as a 
       template to build another scene for you, then paste the json output it gives you 
-      here to render the scene. You can be specific with the colors and numbers of the
-      triangles and spheres, the background, shininess, etc. Note that adding more shapes 
-      will increase render time, so if you add 50 spheres or something crazy, you may
-      have to wait a while.</p>
+      here to render the scene. You can be specific with the colors, numbers, and positions
+      of the triangles and spheres, with the background, shininess, etc. If you're not sure 
+      what a variable is doing, ask ChatGPT about it and tell it that the program is using 
+      the Phong shading model. Note that adding more shapes will increase render time, so if 
+      you add 50 spheres or something crazy, you may have to wait a while to get your image.</p>
+      <br>
+      <p>The below JSON generates an image containing four spheres, lined up horizontally across
+      the middle of the image, with varying levels of reflectiveness, colored red, green, blue, 
+      and yellow respectively. It also contains three triangles, one orange behind the spheres, 
+      one green acting as a floor, and one floating purple triangle. The scene has a pleasant 
+      background color of sky blue. 
+      </p>
 
     <textarea
       [(ngModel)]="jsonInput"
